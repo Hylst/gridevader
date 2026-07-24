@@ -9,16 +9,16 @@ export interface LevelHDImage {
 }
 
 export const LEVEL_IMAGES: LevelHDImage[] = [
-  { id: 1, name: "Coucher de soleil Synthwave", src: "/images/level1.jpg", img: null, loaded: false },
-  { id: 2, name: "Forêt Cybernétique Mystique",  src: "/images/level2.jpg", img: null, loaded: false },
-  { id: 3, name: "Mégapole Cyberpunk Néon",       src: "/images/level3.jpg", img: null, loaded: false },
-  { id: 4, name: "Pyramides du Désert de Données", src: "/images/level4.jpg", img: null, loaded: false },
-  { id: 5, name: "Nébuleuse et Monolitithe",     src: "/images/level5.jpg", img: null, loaded: false },
-  { id: 6, name: "Caverne de Glace Haute Tech",  src: "/images/level6.jpg", img: null, loaded: false },
+  { id: 1, name: "Coucher de soleil Synthwave", src: "./images/level1.jpg", img: null, loaded: false },
+  { id: 2, name: "Forêt Cybernétique Mystique",  src: "./images/level2.jpg", img: null, loaded: false },
+  { id: 3, name: "Mégapole Cyberpunk Néon",       src: "./images/level3.jpg", img: null, loaded: false },
+  { id: 4, name: "Pyramides du Désert de Données", src: "./images/level4.jpg", img: null, loaded: false },
+  { id: 5, name: "Nébuleuse et Monolitithe",     src: "./images/level5.jpg", img: null, loaded: false },
+  { id: 6, name: "Caverne de Glace Haute Tech",  src: "./images/level6.jpg", img: null, loaded: false },
 ];
 
 export const UI_IMAGES = {
-  arcadeCabinet: { src: "/images/arcade_cabinet.jpg", img: null as HTMLImageElement | null, loaded: false },
+  arcadeCabinet: { src: "./images/arcade_cabinet.jpg", img: null as HTMLImageElement | null, loaded: false },
 };
 
 export function preloadAllImages(onProgress?: (loaded: number, total: number) => void) {
