@@ -60,6 +60,7 @@ export default function App() {
   const [combo, setCombo] = useState(0);
   const [captureMsg, setCaptureMsg] = useState<{ text: string; sub: string } | null>(null);
   const [revealActive, setRevealActive] = useState(false);
+  const [showInfo, setShowInfo] = useState(false);
 
   // Refs mutables (pas besoin de re-render à chaque tick)
   const statusRef = useRef<Status>("ready");
@@ -977,14 +978,42 @@ export default function App() {
             <div>FLÈCHES/WASD · ESPACE · ÉCHAP:pause · M:son · B:bombe</div>
             <div className="mt-0.5">Créateur : Hylst - Geoffroy avec l&apos;aide d&apos;une IA</div>
           </div>
-          <button
-            onClick={handleMute}
-            className="pointer-events-auto rounded border border-cyan-700 bg-black/60 px-2 py-0.5 font-['VT323'] text-xs text-cyan-300 hover:bg-cyan-900/40"
-          >
-            {muted ? "🔇" : "🔊"}
-          </button>
+          <div className="pointer-events-auto flex gap-1.5">
+            <button
+              onClick={handleMute}
+              className="rounded border border-cyan-700 bg-black/60 px-2 py-0.5 font-['VT323'] text-xs text-cyan-300 hover:bg-cyan-900/40"
+            >
+              {muted ? "🔇" : "🔊"}
+            </button>
+            <button
+              onClick={() => setShowInfo(true)}
+              title="Comment ce jeu a été fait"
+              className="rounded border border-cyan-700 bg-black/60 px-2 py-0.5 font-['VT323'] text-xs text-cyan-300 hover:bg-cyan-900/40"
+            >
+              ℹ️
+            </button>
+          </div>
         </div>
       </div>
+
+      {showInfo && (
+        <div className="pointer-events-auto fixed inset-0 z-50 flex items-center justify-center bg-black/75 backdrop-blur-sm p-4" onClick={() => setShowInfo(false)}>
+          <div className="w-full max-w-lg max-h-[85vh] overflow-y-auto rounded-lg border border-cyan-700 bg-black/90 shadow-[0_0_30px_rgba(34,211,238,0.2)]" onClick={(e) => e.stopPropagation()}>
+            <div className="p-6 space-y-3.5 font-['VT323'] text-sm leading-relaxed text-cyan-200">
+              <h3 className="font-['Press_Start_2P'] text-xs text-green-400 drop-shadow-[0_0_6px_rgba(74,222,128,0.8)]">Comment ce jeu a été fait</h3>
+              <p><strong className="text-white">Stack :</strong> React 19, TypeScript 5.9, Tailwind CSS 4, Vite 7, compilé en un seul fichier HTML, aucune dépendance chargée depuis l'extérieur.</p>
+              <p><strong className="text-white">Graphismes :</strong> tout est dessiné en Canvas 2D à chaque image (grille, joueur, Qix, illustrations de fond révélées à la capture), aucun sprite animé.</p>
+              <p><strong className="text-white">Musique &amp; sons :</strong> synthétisés en direct avec l'API Web Audio, aucun fichier audio chargé.</p>
+              <p><strong className="text-white">Interactions :</strong> flèches ou WASD pour tracer un trait dans la zone non capturée, espace pour un boost, B pour une bombe.</p>
+              <p><strong className="text-white">Architecture :</strong> logique de jeu pure (<code>game.ts</code>) séparée du rendu (<code>renderer.ts</code>), une seule boucle Canvas met à jour la position du joueur, du Qix et de la zone capturée.</p>
+              <p><strong className="text-white">Algorithmes notables :</strong> à chaque trait complété qui referme une boucle sur un bord déjà capturé, la zone qu'il délimite est remplie par propagation et ajoutée au territoire possédé. Chaque niveau fixe un pourcentage de grille à capturer pour passer au suivant, avec des power-ups temporaires (bouclier, vitesse, bombe, gel et ralenti du Qix).</p>
+            </div>
+            <div className="border-t border-cyan-900 p-4 text-center">
+              <button onClick={() => setShowInfo(false)} className="rounded border border-cyan-700 bg-cyan-900/40 px-6 py-2 font-['VT323'] text-sm text-cyan-200 hover:bg-cyan-900/60">Fermer</button>
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* Message CAPTURE flottant */}
       {captureMsg && status === "playing" && (
