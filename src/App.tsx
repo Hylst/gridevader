@@ -1045,7 +1045,7 @@ export default function App() {
 
       {/* Overlays */}
       {(status === "ready" || status === "gameover" || status === "won" || status === "paused") && (
-        <div className="absolute inset-0 z-40 flex items-center justify-center bg-black/80">
+        <div className="absolute inset-0 z-[100] flex items-center justify-center bg-black/80">
           <div className="flicker text-center px-4 max-w-md">
             <h2 className={`font-['Press_Start_2P'] text-base leading-relaxed drop-shadow-[0_0_12px_rgba(255,255,255,0.5)] sm:text-xl md:text-2xl ${statusColor[status]}`}>
               {statusText[status]}
