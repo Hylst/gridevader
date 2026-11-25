@@ -3,3 +3,13 @@ dist/
 .DS_Store
 *.log
 *.zip
+
+# Agents et secrets locaux (garde-fou du 25/11/2026)
+.env
+.env.*
+agents.md
+AGENTS.md
+CLAUDE.md
+.opencode/
+.claude/
+.cursor/
