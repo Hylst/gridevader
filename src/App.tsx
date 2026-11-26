@@ -941,7 +941,7 @@ export default function App() {
         <div className="flex flex-wrap items-start justify-between gap-2">
           <div className="min-w-0">
             <h1 className="font-['Press_Start_2P'] text-[7px] leading-relaxed tracking-widest text-green-400 drop-shadow-[0_0_6px_rgba(74,222,128,0.8)] sm:text-[10px] md:text-xs">
-              GRID EVADER (QIX STYLE)
+              GRILLE ÉVADÉE (STYLE QIX)
             </h1>
             <p className="mt-0.5 font-['VT323'] text-xs text-cyan-300 opacity-70 sm:text-sm">
               Capturez la grille · Évitez le Qix
