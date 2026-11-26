@@ -1,4 +1,4 @@
-// Logique de jeu Qix — refonte de la capture
+// Logique de jeu Qix : refonte de la capture
 //
 // RÈGLE DE CAPTURE:
 // 1. Le joueur se déplace sur des cases "bord" : cellule 0 adjacente à
@@ -355,7 +355,7 @@ export function findLargestEmptyZoneCenter(cells: Uint8Array): { x: number; y: n
 
 export function getLevelData(level: number): LevelData {
   const lvl = Math.min(level, 12);
-  // Couleurs "ombres" par niveau — l'image bitmap se montre à travers
+  // Couleurs "ombres" par niveau : l'image bitmap se montre à travers
   const colorSets = [
     { cap: "#1a0a20", capLight: "#2a1430", capDark: "#0a0410", capEdge: "#4c1e5a" },
     { cap: "#0a1a20", capLight: "#142a30", capDark: "#040a10", capEdge: "#1e4c5a" },

@@ -1,4 +1,4 @@
-// Système audio procédural — pistes thématiques + SFX riches
+// Système audio procédural : pistes thématiques + SFX riches
 // Génère plusieurs musiques de fond selon le niveau (chaque thème a sa propre ambiance)
 // + des effets sonores avec harmoniques et enveloppes soignées.
 
@@ -91,14 +91,14 @@ function playNoise(duration: number, volume = 0.3, freq = 1000, q = 1, type: Biq
   src.stop(c.currentTime + duration);
 }
 
-// Accord — plusieurs oscillateurs pour un son plus riche
+// Accord : plusieurs oscillateurs pour un son plus riche
 function playChord(freqs: number[], duration: number, type: OscillatorType = "square", volume = 0.15, slideTo?: number) {
   const c = getCtx();
   const t = c.currentTime;
   freqs.forEach((f, i) => playTone(f, duration, type, volume, slideTo, t + i * 0.005));
 }
 
-// Percussion — kick / snare / hat
+// Percussion : kick / snare / hat
 function kick(when?: number) {
   const c = getCtx();
   const t = when ?? c.currentTime;
